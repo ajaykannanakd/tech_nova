@@ -133,3 +133,9 @@ _here = os.path.dirname(os.path.abspath(__file__))
 @app.get("/")
 def serve_index():
     return FileResponse(os.path.join(_here, "index.html"))
+
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("server:app", host="0.0.0.0", port=port)
